@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .body {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000000;
+
+        }
+
+        .form {
+            display: grid;
+
+        }
+
+        .title {
+            margin-top: 12px;
+            background-color: rgb(24, 23, 23);
+            color: aliceblue;
+            outline: none;
+            border-radius: 8px;
+            text-align: left;
+            padding: 8px;
+            margin-left: 2%;
+            margin-right: 2%;
+            text-decoration: none;
+
+        }
+
+        .text {
+            margin-top: 12px;
+            background-color: rgb(24, 23, 23);
+            color: aliceblue;
+            outline: none;
+            padding: 15px;
+            text-align: left;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            margin-left: 2%;
+            margin-right: 20px;
+            text-decoration: none;
+
+        }
+
+        .button {
+
+            background: #0505e8;
+            border-radius: 3px;
+            padding: px 5px;
+            outline: none;
+            color: white;
+            text-decoration: none;
+            margin-left: 2%;
+            text-align: center;
+            font-weight: 900;
+            width: 150px;
+            height: 40px;
+
+        }
+
+        .button:hover {
+            background: rgb(219, 153, 9);
+            color: rgb(255, 255, 255);
+
+            font-weight: 900;
+            width: 150px;
+            height: 40px;
+
+
+        }
+
+        .CreatedBox {
+            margin-top: 20px;
+            margin-left: 2%;
+            margin-right: 2%;
+            display: flex;
+            gap: 20px;
+        }
+
+        .task {
+            background-color: rgb(24, 23, 23);
+            color: white;
+            width: 25%;
+
+            text-overflow: ellipsis;
+            border-radius: 12px;
+            padding: 1%;
+        }
+
+        .ReadMore {
+            color: rgb(79, 79, 255);
+            text-decoration: none;
+            text-align: center;
+            font-weight: 900;
+
+        }
+
+        .edit {
+            color: rgb(195, 88, 90);
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: 900;
+
+        }
+
+        .noTask {
+            color: #4d4d4d;
+        }
+        .ReadEditbuttons{
+            display: flex;
+           
+            justify-content:space-between;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="body">
+        <!-- form (title,text) -->
+
+        <form class="form" action="/create" method="post">
+            <input placeholder="Title goes here..." class="title" type="text" name="title">
+            <textarea placeholder="Write your task details here.." class="text" name="details"></textarea>
+            <input class="button" type="submit" readonly value="Create Task">
+
+        </form>
+
+
+
+        <!-- created task -->
+
+        <% if(files.length>0){ %>
+            <% files.forEach(function(val){ %>
+                <div class="CreatedBox">
+                    <div class="task">
+                        <%=val%>
+                            <br>
+                            <div class="ReadEditbuttons">
+                                <a class="ReadMore" href="/files/<%= val %>">Read More</a>
+
+                                <a class="edit" href="/edit/<%= val %>">Edit Name</a>
+                            </div>
+                    </div>
+                </div>
+                <% }) %>
+                    <% }else{ %>
+                        <h2 class="noTask">no tasks yet...</h2>
+                        <% } %>
+
+
+    </div>
+</body>
+
+</html>
